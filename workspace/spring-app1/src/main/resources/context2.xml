@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<bean 
+class="com.demo.spring.Message" p:header="Tea Break"
+		p:body="Tea break at 4:00pm" />
+
+	<bean id="mail" class="com.demo.spring.Mail" init-method="doInit"
+		destroy-method="doClean" p:toAddress-ref="addr" p:from="trainer"
+		autowire="byType"/>
+
+	<util:list list-class="java.util.ArrayList" value-type="java.lang.String"
+		id="addr">
+		<value>rina@nowhere.com</value>
+		<value>tina@nowhere.com</value>
+		<value>mukesh@nowhere.com</value>
+		<value>anil@nowhere.com</value>
+	</util:list>
+
+</beans>
